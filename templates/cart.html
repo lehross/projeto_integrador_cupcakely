@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+{% if names|length == 0 %}
+
+<div class="empty_cart">
+    <div>
+        <h2>Seu Carrinho Está Vazio</h2>    
+        <button>
+            <a href="/">Voltar à tela inicial</a>
+        </button>    
+    </div>
+</div>
+
+{% else %}
+
+<div class="close">
+    <div class="cart_desc">
+        <h2>Revise seu Pedido</h2>
+        <button>
+            <a href="/closeOrder">Fechar Pedido</a>
+        </button>  
+        <button>
+            <a href="/">Adicionar Mais Itens</a>
+        </button>    
+    </div>
+
+    <div class="cart_items_inverse">
+        {% for name, price, am in zip(names, prices, amount) %}
+    
+        <div>
+            <div>
+                <h3 class="item_name">{{am}}</h3>
+            </div>
+            <span class="vl"></span>
+            <div>
+                <img src="{{url_for('static', filename='img/cupcake2.png')}}" alt="" class="item_img">
+            </div>
+            <span class="vl"></span>
+            <div>
+                <h3 class="item_name">{{name}}</h3>
+            </div>
+            <span class="vl"></span>
+            <div>
+                <h3 class="item_name">R${{price}}</h3>
+            </div>
+            
+        </div>
+    
+        {% endfor %}
+    
+    </div>
+</div>
+
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<!-- Iterate from items from Products available in stock -->
+{% for a, b, c in items_list %}
+
+<div class="items">
+    
+    <div>
+        <div>
+            <img src="{{url_for('static', filename='img/cupcake2.png')}}" alt="" class="item_img">
+        </div>
+        <span class="vl"></span>
+        <div>
+            <h3 class="item_name">{{a[1]}}</h3>
+        </div>
+        <span class="vl"></span>
+        <div>
+            <h3 class="item_name">R${{a[2]}}</h3>
+        </div>
+        <span class="vl"></span>
+        <div>
+            <form action="/" method="post">
+                <a href="/addCart?Id={{a[0]}}" id="add_to_cart">
+                    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                </a>
+            </form>
+            
+        </div>
+        
+    </div>
+    <div>
+        <div>
+            <img src="{{url_for('static', filename='img/cupcake3.png')}}" alt="" class="item_img">
+        </div>
+        <span class="vl"></span>
+        <div>
+            <h3 class="item_name">{{b[1]}}</h3>
+        </div>
+        <span class="vl"></span>
+        <div>
+            <h3 class="item_name">R${{b[2]}}</h3>
+        </div>
+        <span class="vl"></span>
+        <div>
+            <a href="/addCart?Id={{b[0]}}" id="add_to_cart">
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <img src="{{url_for('static', filename='img/cupcake4.png')}}" alt="" class="item_img">
+        </div>
+        <span class="vl"></span>
+        <div>
+            <h3 class="item_name">{{c[1]}}</h3>
+        </div>
+        <span class="vl"></span>
+        <div>
+            <h3 class="item_name">R${{c[2]}}</h3>
+        </div>
+        <span class="vl"></span>
+        <div>
+            <a href="/addCart?Id={{c[0]}}" id="add_to_cart">
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
